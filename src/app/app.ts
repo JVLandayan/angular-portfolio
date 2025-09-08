@@ -14,12 +14,12 @@ export class App {
   protected readonly currentSection = signal('home');
 
   protected readonly navItems = signal([
-    { id: 'home', label: 'Home', icon: '🏠' },
-    { id: 'about', label: 'About', icon: '👨‍💻' },
-    { id: 'skills', label: 'Skills', icon: '⚡' },
-    { id: 'projects', label: 'Projects', icon: '🚀' },
-    { id: 'experience', label: 'Experience', icon: '💼' },
-    { id: 'contact', label: 'Contact', icon: '📧' }
+    { id: 'home', label: 'Home' },
+    { id: 'about', label: 'About' },
+    { id: 'skills', label: 'Skills' },
+    { id: 'projects', label: 'Projects' },
+    { id: 'experience', label: 'Experience' },
+    { id: 'contact', label: 'Contact' }
   ]);
 
   protected readonly skills = signal([
@@ -107,6 +107,7 @@ export class App {
     {
       provider: 'Udemy',
       year: '2025',
+      logoUrl: 'https://res.cloudinary.com/dadjlsn2j/image/upload/v1757340294/Icon_wpnske.png',
       courses: [
         { name: 'Complete C# Masterclass', status: 'Completed', certificateUrl: 'https://ude.my/UC-af0649ac-7c1f-4227-bbf8-25048e22624b' },
         { name: 'Entity Framework: A full tour', status: 'Completed', certificateUrl: 'https://ude.my/UC-10044e6c-182c-47bd-8a2e-e341a9adf2da' },
@@ -118,6 +119,7 @@ export class App {
     {
       provider: 'Trainocate',
       year: '2022',
+      logoUrl: 'https://res.cloudinary.com/dadjlsn2j/image/upload/v1757340156/trainocate-ph_tbqvgn.jpg',
       courses: [
         { name: 'Building Web Applications with Angular 12', status: 'Completed' },
         { name: 'DP-080: Querying Data with Microsoft Transact-SQL', status: 'Completed' },

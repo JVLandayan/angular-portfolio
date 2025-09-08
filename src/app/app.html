@@ -46,8 +46,7 @@
             <button
               (click)="scrollToSectionMobile(item.id)"
               class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 w-full text-left"
-            >
-              {{ item.icon }} {{ item.label }}
+            > {{ item.label }}
             </button>
           }
         </div>
@@ -287,8 +286,12 @@
         @for (cert of certifications(); track cert.provider) {
           <div class="glass-dark rounded-2xl p-8">
             <div class="flex items-center mb-6">
-              <div class="w-12 h-12 bg-primary-600 rounded-lg flex items-center justify-center mr-4">
-                📚
+              <div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center mr-4 p-1">
+                <img
+                  [src]="cert.logoUrl"
+                  [alt]="cert.provider + ' logo'"
+                  class="w-full h-full object-contain rounded"
+                >
               </div>
               <div>
                 <h3 class="text-2xl font-semibold text-white">{{ cert.provider }}</h3>
@@ -355,9 +358,11 @@
             <span>GitHub</span>
           </a>
           <a href="https://www.udemy.com/user/jv-landayan/" target="_blank" class="bg-purple-600 hover:bg-purple-700 text-white py-4 px-6 rounded-lg text-center font-semibold transition-all duration-200 transform hover:scale-105 flex items-center space-x-2">
-            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M23.57 8.4c0 1.2-.93 2.13-2.13 2.13s-2.13-.93-2.13-2.13.93-2.13 2.13-2.13S23.57 7.2 23.57 8.4zM6.427 4.8c-1.2 0-2.133.933-2.133 2.133v9.6c0 1.2.933 2.133 2.133 2.133h11.147c1.2 0 2.133-.933 2.133-2.133v-9.6c0-1.2-.933-2.133-2.133-2.133H6.427zm8.746 6.133c0-.533-.427-.96-.96-.96s-.96.427-.96.96v3.2c0 .533.427.96.96.96s.96-.427.96-.96v-3.2zm-4.8 0c0-.533-.427-.96-.96-.96s-.96.427-.96.96v3.2c0 .533.427.96.96.96s.96-.427.96-.96v-3.2z"/>
-            </svg>
+            <img
+              src="https://res.cloudinary.com/dadjlsn2j/image/upload/v1757340294/Icon_wpnske.png"
+              alt="Udemy logo"
+              class="w-5 h-5 object-contain"
+            >
             <span>Udemy</span>
           </a>
         </div>
