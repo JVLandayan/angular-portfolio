@@ -1,5 +1,11 @@
 import { Component, signal, computed, ChangeDetectionStrategy } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { NavigationItem } from './core/models/navigation-item.model';
+import { Project } from './core/models/project.model';
+import { Experience } from './core/models/experience.model';
+import { Certification } from './core/models/certification.model';
+import { Skill } from './core/models/typeskill.model';
+
 
 @Component({
   selector: 'app-root',
@@ -13,7 +19,7 @@ export class App {
   protected readonly isMenuOpen = signal(false);
   protected readonly currentSection = signal('home');
 
-  protected readonly navItems = signal([
+  protected readonly navItems = signal<NavigationItem[]>([
     { id: 'home', label: 'Home' },
     { id: 'about', label: 'About' },
     { id: 'skills', label: 'Skills' },
@@ -22,14 +28,14 @@ export class App {
     { id: 'contact', label: 'Contact' }
   ]);
 
-  protected readonly skills = signal([
+  protected readonly skills = signal<Skill[]>([
     { name: 'Frontend', technologies: ['Angular', 'Vue.js', 'Next.js', 'React', 'TypeScript', 'TailwindCSS'] },
     { name: 'Backend', technologies: ['Node/Express', '.NET', 'C#', 'Microservices', 'gRPC', 'RESTful APIs'] },
     { name: 'Database/ORMs', technologies: ['MongoDB', 'MSSQL', 'Entity Framework', 'Prisma ORM', 'Qdrant Vector DB'] },
     { name: 'Cloud/Deployment', technologies: ['Vercel', 'Railway', 'CI/CD', 'Docker', 'Jenkins', 'Azure Data Factory'] }
   ]);
 
-  protected readonly projects = signal([
+  protected readonly projects = signal<Project[]>([
     {
       title: 'Dub Lab Sports CMS (Production)',
       description: 'Live sports content management system with full TypeScript stack. Features real-time messaging, CRUD operations, and author/writer collaboration system deployed at dublab.com.ph',
@@ -73,7 +79,7 @@ export class App {
     }
   ]);
 
-  protected readonly experience = signal([
+  protected readonly experience = signal<Experience[]>([
     {
       company: 'HDAO - Freelance',
       position: 'Full Stack Engineer',
@@ -94,7 +100,7 @@ export class App {
     }
   ]);
 
-  protected readonly otherExperience = signal([
+  protected readonly otherExperience = signal<Experience[]>([
     {
       company: 'Dub Lab Philippines (Startup)',
       position: 'Full Stack Engineer - Maintainer',
@@ -103,7 +109,7 @@ export class App {
     }
   ]);
 
-  protected readonly certifications = signal([
+  protected readonly certifications = signal<Certification[]>([
     {
       provider: 'Udemy',
       year: '2025',
