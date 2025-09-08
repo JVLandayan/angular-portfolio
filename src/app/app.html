@@ -1,0 +1,379 @@
+<nav class="fixed top-0 left-0 right-0 z-50 bg-gray-900/95 backdrop-blur-sm border-b border-gray-800">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-16">
+      <div class="flex-shrink-0">
+        <h1 class="text-2xl font-bold gradient-text">{{ title() }}</h1>
+      </div>
+
+      <div class="hidden md:block">
+        <div class="flex items-center space-x-8">
+          @for (item of navItems(); track item.id) {
+            <button
+              (click)="scrollToSection(item.id)"
+              [class]="currentSection() === item.id
+                ? 'text-white bg-primary-600/20 border-b-2 border-primary-400'
+                : 'text-gray-300 hover:text-white hover:bg-gray-800/50'"
+              class="px-3 py-2 text-sm font-medium transition-all duration-200 rounded-lg"
+            >
+              {{ item.label }}
+            </button>
+          }
+          <button
+            (click)="toggleDarkMode()"
+            class="p-2 rounded-lg bg-gray-800 hover:bg-gray-700 text-gray-300 hover:text-white transition-colors duration-200"
+          >
+            @if (isDarkMode()) {
+              🌙
+            } @else {
+              ☀️
+            }
+          </button>
+        </div>
+      </div>
+
+      <div class="md:hidden">
+        <button
+          (click)="toggleMenu()"
+          class="p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700"
+        >
+          @if (!isMenuOpen()) {
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+          } @else {
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+          }
+        </button>
+      </div>
+    </div>
+
+    @if (isMenuOpen()) {
+      <div class="md:hidden">
+        <div class="px-2 pt-2 pb-3 space-y-1 bg-gray-800 rounded-lg mt-2">
+          @for (item of navItems(); track item.id) {
+            <button
+              (click)="scrollToSectionMobile(item.id)"
+              class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 w-full text-left"
+            >
+              {{ item.icon }} {{ item.label }}
+            </button>
+          }
+        </div>
+      </div>
+    }
+  </div>
+</nav>
+
+<main class="bg-gray-900 text-white">
+  <section id="home" class="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+      <div class="text-center">
+        <div class="mb-8">
+          <div class="w-32 h-32 rounded-full bg-gradient-to-br from-primary-400 to-primary-600 mx-auto mb-8 flex items-center justify-center text-4xl font-bold text-white shadow-2xl">
+            JD
+          </div>
+        </div>
+        <h1 class="text-5xl md:text-7xl font-bold mb-6">
+          <span class="gradient-text">Full Stack</span><br/>
+          <span class="text-white">Developer</span>
+        </h1>
+        <p class="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto">
+          Crafting digital experiences with modern technologies.
+          Passionate about creating scalable, user-friendly applications.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <button
+            (click)="scrollToSection('projects')"
+            class="px-8 py-3 bg-primary-600 hover:bg-primary-700 text-white rounded-lg font-semibold transition-all duration-200 transform hover:scale-105"
+          >
+            View My Work
+          </button>
+          <button
+            (click)="scrollToSection('contact')"
+            class="px-8 py-3 border-2 border-primary-600 text-primary-400 hover:bg-primary-600 hover:text-white rounded-lg font-semibold transition-all duration-200"
+          >
+            Let's Connect
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="about" class="py-20 bg-gray-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-bold mb-4">
+          About <span class="gradient-text">Me</span>
+        </h2>
+        <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+          I'm a passionate full-stack developer with over 5 years of experience building web applications.
+          I love turning complex problems into simple, beautiful solutions.
+        </p>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div class="space-y-6">
+          <div class="glass-dark rounded-2xl p-8">
+            <h3 class="text-2xl font-semibold mb-4 text-primary-400">My Journey</h3>
+            <p class="text-gray-300 leading-relaxed mb-4">
+              Started my development journey in 2019, diving deep into modern web technologies.
+              I've had the privilege of working with innovative startups and established companies,
+              always focusing on delivering exceptional user experiences.
+            </p>
+            <p class="text-gray-300 leading-relaxed">
+              When I'm not coding, you can find me exploring new technologies, contributing to open-source projects,
+              or sharing knowledge with the developer community.
+            </p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-6">
+          <div class="glass-dark rounded-xl p-6 text-center">
+            <div class="text-3xl font-bold text-primary-400 mb-2">50+</div>
+            <div class="text-gray-300">Projects Completed</div>
+          </div>
+          <div class="glass-dark rounded-xl p-6 text-center">
+            <div class="text-3xl font-bold text-primary-400 mb-2">5+</div>
+            <div class="text-gray-300">Years Experience</div>
+          </div>
+          <div class="glass-dark rounded-xl p-6 text-center">
+            <div class="text-3xl font-bold text-primary-400 mb-2">3</div>
+            <div class="text-gray-300">Companies</div>
+          </div>
+          <div class="glass-dark rounded-xl p-6 text-center">
+            <div class="text-3xl font-bold text-primary-400 mb-2">100%</div>
+            <div class="text-gray-300">Client Satisfaction</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="skills" class="py-20 bg-gray-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-bold mb-4">
+          My <span class="gradient-text">Skills</span>
+        </h2>
+        <p class="text-xl text-gray-300">
+          Technologies and tools I use to bring ideas to life
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        @for (skillCategory of skills(); track skillCategory.name) {
+          <div class="glass-dark rounded-2xl p-8 hover:scale-105 transition-transform duration-300">
+            <h3 class="text-2xl font-semibold mb-6 text-primary-400">{{ skillCategory.name }}</h3>
+            <div class="space-y-3">
+              @for (tech of skillCategory.technologies; track tech) {
+                <div class="bg-gray-700/50 rounded-lg px-4 py-2 text-gray-300">
+                  {{ tech }}
+                </div>
+              }
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+
+
+  <section id="projects" class="py-20 bg-gray-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-bold mb-4">
+          Featured <span class="gradient-text">Projects</span>
+        </h2>
+        <p class="text-xl text-gray-300">
+          Some of my recent work that I'm proud of
+        </p>
+      </div>
+
+      <div class="grid lg:grid-cols-3 gap-8">
+        @for (project of projects(); track project.title) {
+          <div class="glass-dark rounded-2xl overflow-hidden hover:scale-105 transition-transform duration-300">
+            <div class="h-48 bg-gradient-to-br from-primary-500 to-primary-700 flex items-center justify-center">
+              <img [src]="project.image" [alt]="project.title" class="w-full h-full object-cover">
+            </div>
+            <div class="p-8">
+              <h3 class="text-2xl font-semibold mb-4 text-white">{{ project.title }}</h3>
+              <p class="text-gray-300 mb-6">{{ project.description }}</p>
+              <div class="flex flex-wrap gap-2 mb-6">
+                @for (tech of project.technologies; track tech) {
+                  <span class="bg-primary-600/20 text-primary-400 px-3 py-1 rounded-full text-sm">
+                    {{ tech }}
+                  </span>
+                }
+              </div>
+              <div class="flex gap-4">
+                <a
+                  [href]="project.demoLink"
+                  class="flex-1 bg-primary-600 hover:bg-primary-700 text-white py-3 px-4 rounded-lg text-center font-semibold transition-colors duration-200"
+                >
+                  Live Demo
+                </a>
+                <a
+                  [href]="project.codeLink"
+                  class="flex-1 border border-primary-600 text-primary-400 hover:bg-primary-600 hover:text-white py-3 px-4 rounded-lg text-center font-semibold transition-colors duration-200"
+                >
+                  View Code
+                </a>
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+
+  <section id="experience" class="py-20 bg-gray-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-bold mb-4">
+          Work <span class="gradient-text">Experience</span>
+        </h2>
+        <p class="text-xl text-gray-300">
+          My professional journey and achievements
+        </p>
+      </div>
+
+      <div class="max-w-4xl mx-auto">
+        <div class="relative">
+          <div class="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary-400 to-primary-600"></div>
+
+          @for (job of experience(); track job.company; let isFirst = $first) {
+            <div class="relative flex items-start mb-12">
+              <div class="absolute left-6 w-4 h-4 bg-primary-500 rounded-full border-4 border-gray-900"></div>
+              <div class="ml-20 glass-dark rounded-2xl p-8 flex-1">
+                <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                  <h3 class="text-2xl font-semibold text-white">{{ job.position }}</h3>
+                  <span class="text-primary-400 font-medium">{{ job.duration }}</span>
+                </div>
+                <h4 class="text-xl text-primary-400 mb-4">{{ job.company }}</h4>
+                <p class="text-gray-300 leading-relaxed">{{ job.description }}</p>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="py-20 bg-gray-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-bold mb-4">
+          Let's <span class="gradient-text">Connect</span>
+        </h2>
+        <p class="text-xl text-gray-300">
+          Ready to start your next project? Let's make it happen!
+        </p>
+      </div>
+
+      <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-12">
+        <div class="space-y-8">
+          <div class="glass-dark rounded-2xl p-8">
+            <h3 class="text-2xl font-semibold mb-6 text-primary-400">Get in Touch</h3>
+            <div class="space-y-6">
+              <div class="flex items-center space-x-4">
+                <div class="w-12 h-12 bg-primary-600 rounded-lg flex items-center justify-center">
+                  📧
+                </div>
+                <div>
+                  <p class="text-gray-300">Email</p>
+                  <p class="text-white font-semibold">john.developer@email.com</p>
+                </div>
+              </div>
+              <div class="flex items-center space-x-4">
+                <div class="w-12 h-12 bg-primary-600 rounded-lg flex items-center justify-center">
+                  📱
+                </div>
+                <div>
+                  <p class="text-gray-300">Phone</p>
+                  <p class="text-white font-semibold">+1 (555) 123-4567</p>
+                </div>
+              </div>
+              <div class="flex items-center space-x-4">
+                <div class="w-12 h-12 bg-primary-600 rounded-lg flex items-center justify-center">
+                  📍
+                </div>
+                <div>
+                  <p class="text-gray-300">Location</p>
+                  <p class="text-white font-semibold">San Francisco, CA</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex space-x-4">
+            <a href="#" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white py-4 px-6 rounded-lg text-center font-semibold transition-colors duration-200">
+              LinkedIn
+            </a>
+            <a href="#" class="flex-1 bg-gray-700 hover:bg-gray-600 text-white py-4 px-6 rounded-lg text-center font-semibold transition-colors duration-200">
+              GitHub
+            </a>
+            <a href="#" class="flex-1 bg-blue-500 hover:bg-blue-600 text-white py-4 px-6 rounded-lg text-center font-semibold transition-colors duration-200">
+              Twitter
+            </a>
+          </div>
+        </div>
+
+        <div class="glass-dark rounded-2xl p-8">
+          <h3 class="text-2xl font-semibold mb-6 text-primary-400">Send a Message</h3>
+          <form class="space-y-6">
+            <div>
+              <input
+                type="text"
+                placeholder="Your Name"
+                class="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:border-primary-500"
+              >
+            </div>
+            <div>
+              <input
+                type="email"
+                placeholder="Your Email"
+                class="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:border-primary-500"
+              >
+            </div>
+            <div>
+              <textarea
+                rows="5"
+                placeholder="Your Message"
+                class="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:border-primary-500"
+              ></textarea>
+            </div>
+            <button
+              type="submit"
+              class="w-full bg-primary-600 hover:bg-primary-700 text-white py-3 px-6 rounded-lg font-semibold transition-colors duration-200"
+            >
+              Send Message
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 border-t border-gray-800 py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center">
+        <div class="mb-8">
+          <h3 class="text-2xl font-bold gradient-text mb-4">{{ title() }}</h3>
+          <p class="text-gray-400">Full Stack Developer & Technology Enthusiast</p>
+        </div>
+        <div class="border-t border-gray-800 pt-8">
+          <p class="text-gray-400">
+            &copy; {{ getCurrentYear() }} {{ title() }}. Built with Angular & Tailwind CSS.
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+</main>
+
+<router-outlet />
