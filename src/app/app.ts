@@ -47,11 +47,12 @@ export class App {
     },
     {
       title: 'Sports CMS API (Monolithic)',
-      description: 'Portfolio version of the Sports CMS built with .NET 9 backend. Clean code implementation with multiple layers/class libraries, each with specific functionality and separation of concerns.',
-      technologies: ['.NET 9', 'Clean Architecture', 'Class Libraries', 'Entity Framework', 'C#', 'RESTful APIs'],
+      description: 'Portfolio version of the Sports CMS built with .NET 9 backend. Clean code implementation with multiple layers/class libraries, each with specific functionality and separation of concerns. This is deployed via an AKS cluster through azure pipelines. This includes configuring the pipeline to use AKV for dynamically fetching the secrets value from KV and utilizing it in a Pod',
+      technologies: ['.NET 9', 'Clean Architecture', 'Class Libraries', 'Entity Framework', 'C#', 'RESTful APIs', 'Azure Pipelines','Azure Devops', 'Azure Kubernetes Service'],
       image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop',
       demoLink: '#',
-      codeLink: '#'
+      codeLink: '#',
+      private: true
     },
     {
       title: 'Sports CMS API (Microservices)',
