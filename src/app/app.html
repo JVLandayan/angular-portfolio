@@ -188,17 +188,21 @@
                 }
               </div>
               <div class="flex gap-4">
-                <a
+                @if (!project.noLiveDemo) {
+                 <a
                   [href]="project.demoLink"
                   class="flex-1 bg-primary-600 hover:bg-primary-700 text-white py-3 px-4 rounded-lg text-center font-semibold transition-colors duration-200"
                 >
                   Live Demo
                 </a>
+                }
+
                 <a
                   [href]="project.codeLink"
+                  target="_blank"
                   class="flex-1 border border-primary-600 text-primary-400 hover:bg-primary-600 hover:text-white py-3 px-4 rounded-lg text-center font-semibold transition-colors duration-200"
                 >
-                 @if (project.private) { Upon Request (Private) }
+                 @if (project.private) { Source Code Upon Request (Private) }
                   @else { View Code }
                 </a>
               </div>

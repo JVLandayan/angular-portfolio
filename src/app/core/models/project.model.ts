@@ -7,4 +7,5 @@ export interface Project {
   demoLink: string;
   codeLink: string;
   private?: boolean;
+  noLiveDemo?:boolean;
 }
