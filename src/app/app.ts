@@ -139,7 +139,7 @@ export class App {
       position: 'Full Stack Engineer',
       duration: 'January 2024 - July 2025',
       description:
-        'Developed cryptocurrency research bot using RAG pipeline with end-to-end orchestration. Built full-stack applications using Next.js, Vue, Angular with serverless backends. Migrated application on-chain with smart contract deployment on Polygon Network.',
+        'Developed cryptocurrency research bot using RAG pipeline with end-to-end orchestration. Built full-stack applications using Next.js, Vue, Angular with serverless backends (Vercel). Spearheaded the application migration on-chain with smart contracts deployed on Polygon Network.',
     },
     {
       company: 'Willis Towers Watson',
@@ -153,7 +153,7 @@ export class App {
       position: 'Full Stack Engineer Intern',
       duration: 'March 2022 - July 2022',
       description:
-        'Completed intensive full-stack training using React, Node.js, and database ORMs. Developed backend application with Node.js/Express exposing KPI data through RESTful APIs from Azure Data Factory ETL pipeline. Implemented CI/CD deployments using Jenkins.',
+        'Completed intensive full-stack training using React, Node.js, and database ORMs. Developed a backend application with Node.js/Express exposing KPI data through RESTful APIs from Azure Data Factory ETL pipeline. Implemented CI/CD deployments using Jenkins.',
     },
   ]);
 
@@ -183,10 +183,22 @@ export class App {
           status: CERTIFICATION_STATUS.COMPLETED,
           certificateUrl: 'https://ude.my/UC-10044e6c-182c-47bd-8a2e-e341a9adf2da',
         },
-        { name: 'Docker Mastery: with Kubernetes', status: CERTIFICATION_STATUS.COMPLETED, certificateUrl:'https://www.udemy.com/certificate/UC-276ce7d7-7b8b-4d44-812f-33a6ca486fd3/' },
-        { name: 'Terraform', status: CERTIFICATION_STATUS.QUEUED },
-        { name: 'Master ASP.NET Core Identity: Authentication & Authorization', status: CERTIFICATION_STATUS.QUEUED },
-        { name: '.NET Microservices with Azure DevOps & AKS', status: CERTIFICATION_STATUS.INPROGRESS },
+        {
+          name: 'Docker Mastery: with Kubernetes',
+          status: CERTIFICATION_STATUS.COMPLETED,
+          certificateUrl:
+            'https://www.udemy.com/certificate/UC-276ce7d7-7b8b-4d44-812f-33a6ca486fd3/',
+        },
+
+        {
+          name: 'Software Architecture & Design of Modern Large Scale Systems',
+          status: CERTIFICATION_STATUS.INPROGRESS,
+        },
+        {
+          name: 'Master ASP.NET Core Identity: Authentication & Authorization',
+          status: CERTIFICATION_STATUS.QUEUED,
+        },
+        { name: '.NET Microservices with Azure DevOps & AKS', status: CERTIFICATION_STATUS.QUEUED },
       ],
     },
     {
@@ -195,8 +207,14 @@ export class App {
       logoUrl:
         'https://res.cloudinary.com/dadjlsn2j/image/upload/v1757340156/trainocate-ph_tbqvgn.jpg',
       courses: [
-        { name: 'Building Web Applications with Angular 12', status: CERTIFICATION_STATUS.COMPLETED },
-        { name: 'DP-080: Querying Data with Microsoft Transact-SQL', status: CERTIFICATION_STATUS.COMPLETED },
+        {
+          name: 'Building Web Applications with Angular 12',
+          status: CERTIFICATION_STATUS.COMPLETED,
+        },
+        {
+          name: 'DP-080: Querying Data with Microsoft Transact-SQL',
+          status: CERTIFICATION_STATUS.COMPLETED,
+        },
         { name: 'Developing ASP.NET MVC Web Applications', status: CERTIFICATION_STATUS.COMPLETED },
       ],
     },
@@ -205,7 +223,7 @@ export class App {
   protected readonly isDarkMode = signal(true);
 
   toggleMenu() {
-    this.isMenuOpen.update((isOpen) => !isOpen);
+    this.isMenuOpen.update((isOpen: boolean) => !isOpen);
   }
 
   setCurrentSection(section: string) {
@@ -213,7 +231,7 @@ export class App {
   }
 
   toggleDarkMode() {
-    this.isDarkMode.update((isDark) => !isDark);
+    this.isDarkMode.update((isDark: boolean) => !isDark);
   }
 
   scrollToSection(sectionId: string) {
