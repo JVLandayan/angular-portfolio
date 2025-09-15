@@ -1,4 +1,7 @@
 import { inject } from '@vercel/analytics';
+import { injectSpeedInsights } from '@vercel/speed-insights';
+
+injectSpeedInsights();
 inject();
 
 import { bootstrapApplication } from '@angular/platform-browser';
