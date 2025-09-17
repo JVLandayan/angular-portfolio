@@ -144,7 +144,7 @@ export class App {
     {
       company: 'Willis Towers Watson',
       position: 'Full Stack .NET Engineer',
-      duration: 'January 2022 - April 2025',
+      duration: 'August 2022 - January 2024',
       description:
         'Developed and maintained Angular 2 MVC applications and modern Angular frontend with microservices backends. Migrated inter-service communication from HTTP to gRPC.',
     },
