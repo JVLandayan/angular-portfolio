@@ -135,7 +135,7 @@ export class App {
 
   protected readonly experience = signal<Experience[]>([
     {
-      company: 'HDAO - Freelance',
+      company: 'Agora Hive - Freelance',
       position: 'Full Stack Engineer',
       duration: 'January 2024 - July 2025',
       description:
