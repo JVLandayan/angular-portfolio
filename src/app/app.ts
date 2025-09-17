@@ -77,23 +77,23 @@ export class App {
       private: true,
       noLiveDemo: true,
     },
-    {
-      title: 'Sports CMS API (Microservices)',
-      description:
-        'Advanced microservices version with distributed architecture, service communication, and containerized deployment. Demonstrates enterprise-level system design and scalability.',
-      technologies: [
-        'Microservices',
-        'Docker',
-        'Service Communication',
-        'Distributed Systems',
-        '.NET',
-        'API Gateway',
-      ],
-      image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&h=400&fit=crop',
-      demoLink: '#',
-      codeLink: '#',
-      noLiveDemo: true,
-    },
+    // {
+    //   title: 'Sports CMS API (Microservices)',
+    //   description:
+    //     'Advanced microservices version with distributed architecture, service communication, and containerized deployment. Demonstrates enterprise-level system design and scalability.',
+    //   technologies: [
+    //     'Microservices',
+    //     'Docker',
+    //     'Service Communication',
+    //     'Distributed Systems',
+    //     '.NET',
+    //     'API Gateway',
+    //   ],
+    //   image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&h=400&fit=crop',
+    //   demoLink: '#',
+    //   codeLink: '#',
+    //   noLiveDemo: true,
+    // },
     {
       title: 'EcoSystem Website',
       description:
@@ -108,7 +108,7 @@ export class App {
       ],
       image: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=600&h=400&fit=crop',
       demoLink: '#',
-      codeLink: '#',
+      codeLink: 'https://github.com/JVLandayan/Ecosystems_Client',
       noLiveDemo: true,
     },
     {
