@@ -200,6 +200,10 @@ export class App {
           status: CERTIFICATION_STATUS.INPROGRESS,
         },
         {
+          name: 'Reactive Angular With RxJS',
+          status: CERTIFICATION_STATUS.INPROGRESS,
+        },
+        {
           name: 'Master ASP.NET Core Identity: Authentication & Authorization',
           status: CERTIFICATION_STATUS.QUEUED,
         },
