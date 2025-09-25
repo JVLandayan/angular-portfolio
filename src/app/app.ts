@@ -196,6 +196,10 @@ export class App {
           certificateUrl:"https://www.udemy.com/certificate/UC-8d9da81d-282f-49b0-97f3-7417767aa230/"
         },
         {
+          name: 'Angular Deep Dive',
+          status: CERTIFICATION_STATUS.INPROGRESS,
+        },
+        {
           name: 'Master ASP.NET Core Identity: Authentication & Authorization',
           status: CERTIFICATION_STATUS.QUEUED,
         },
