@@ -192,13 +192,14 @@ export class App {
 
         {
           name: 'Software Architecture & Design of Modern Large Scale Systems',
-          status: CERTIFICATION_STATUS.INPROGRESS,
+          status: CERTIFICATION_STATUS.COMPLETED,
+          certificateUrl:"https://www.udemy.com/certificate/UC-8d9da81d-282f-49b0-97f3-7417767aa230/"
         },
         {
           name: 'Master ASP.NET Core Identity: Authentication & Authorization',
           status: CERTIFICATION_STATUS.QUEUED,
         },
-        { name: '.NET Microservices with Azure DevOps & AKS', status: CERTIFICATION_STATUS.QUEUED },
+        { name: 'The Complete Microservices & Event-Driven Architecture', status: CERTIFICATION_STATUS.QUEUED },
       ],
     },
     {
