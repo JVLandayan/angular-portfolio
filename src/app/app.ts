@@ -1,7 +1,7 @@
-import { Component, signal, computed, ChangeDetectionStrategy } from '@angular/core';
+import { Component, signal, computed, ChangeDetectionStrategy, HostListener } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NavigationItem } from './core/models/navigation-item.model';
-import { Project } from './core/models/project.model';
+import { Project, ProjectGroup } from './core/models/project.model';
 import { Experience } from './core/models/experience.model';
 import { Certification } from './core/models/certification.model';
 import { Skill } from './core/models/typeskill.model';
@@ -94,35 +94,31 @@ export class App {
     //   codeLink: '#',
     //   noLiveDemo: true,
     // },
+
     {
       title: 'EcoSystem Website',
       description:
         'Website for eco-tigers organization at University of Santo Tomas. Features admin functionalities, author account management, and content management system with customizable profiles.',
-      technologies: [
-        '.NET Core 3.1',
-        'Entity Framework Core',
-        'C#',
-        'Angular',
-        'TypeScript',
-        'MSSQL',
-      ],
+      technologies: ['Angular', 'TypeScript'],
       image: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=600&h=400&fit=crop',
       demoLink: '#',
       codeLink: 'https://github.com/JVLandayan/Ecosystems_Client',
       noLiveDemo: true,
+      techType: 'Frontend',
     },
     {
-      title: 'InternConnect Platform (API)',
+      title: 'EcoSystem Website',
       description:
-        'University capstone project for managing internship processes. Won Best Capstone Project for the Web and Mobile development track.',
-      technologies: ['.NET 5', 'Entity Framework Core', 'C#', 'MSSQL', 'Hangfire'],
-      image: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&h=400&fit=crop',
+        'Website for eco-tigers organization at University of Santo Tomas. Features admin functionalities, author account management, and content management system with customizable profiles.',
+      technologies: ['.NET Core 3.1', 'Entity Framework Core', 'C#', 'MSSQL'],
+      image: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=600&h=400&fit=crop',
       demoLink: '#',
-      codeLink: 'https://github.com/JVLandayan/InternConnect-API',
+      codeLink: 'https://github.com/JVLandayan/Ecosystems_API',
       noLiveDemo: true,
+      techType: 'Backend',
     },
-    {
-      title: 'InternConnect Platform (UI)',
+        {
+      title: 'InternConnect Platform',
       description:
         'University capstone project for managing internship processes. Won Best Capstone Project for the Web and Mobile development track.',
       technologies: ['Angular', 'TypeScript', 'Tailwind'],
@@ -130,7 +126,20 @@ export class App {
       demoLink: '#',
       codeLink: 'https://github.com/batangchucks/InternConnect-ClientFinalv2',
       noLiveDemo: true,
+      techType: 'Frontend',
     },
+    {
+      title: 'InternConnect Platform',
+      description:
+        'University capstone project for managing internship processes. Won Best Capstone Project for the Web and Mobile development track.',
+      technologies: ['.NET 5', 'Entity Framework Core', 'C#', 'MSSQL', 'Hangfire'],
+      image: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&h=400&fit=crop',
+      demoLink: '#',
+      codeLink: 'https://github.com/JVLandayan/InternConnect-API',
+      noLiveDemo: true,
+      techType: 'Backend',
+    },
+
   ]);
 
   protected readonly experience = signal<Experience[]>([
@@ -193,7 +202,8 @@ export class App {
         {
           name: 'Software Architecture & Design of Modern Large Scale Systems',
           status: CERTIFICATION_STATUS.COMPLETED,
-          certificateUrl:"https://www.udemy.com/certificate/UC-8d9da81d-282f-49b0-97f3-7417767aa230/"
+          certificateUrl:
+            'https://www.udemy.com/certificate/UC-8d9da81d-282f-49b0-97f3-7417767aa230/',
         },
         {
           name: 'Angular Deep Dive',
@@ -204,10 +214,17 @@ export class App {
           status: CERTIFICATION_STATUS.INPROGRESS,
         },
         {
+          name: 'SQL for Data Analysis: Advanced SQL Querying Techniques',
+          status: CERTIFICATION_STATUS.QUEUED,
+        },
+        {
           name: 'Master ASP.NET Core Identity: Authentication & Authorization',
           status: CERTIFICATION_STATUS.QUEUED,
         },
-        { name: 'The Complete Microservices & Event-Driven Architecture', status: CERTIFICATION_STATUS.QUEUED },
+        {
+          name: 'The Complete Microservices & Event-Driven Architecture',
+          status: CERTIFICATION_STATUS.QUEUED,
+        },
       ],
     },
     {
@@ -230,6 +247,47 @@ export class App {
   ]);
 
   protected readonly isDarkMode = signal(true);
+  protected readonly isModalOpen = signal(false);
+  protected readonly selectedProjectGroup = signal<ProjectGroup | null>(null);
+
+  protected readonly groupedProjects = computed<(Project | ProjectGroup)[]>(() => {
+    const projects = this.projects();
+    const groupMap = new Map<string, Project[]>();
+    const ungroupedProjects: Project[] = [];
+
+    projects.forEach((project) => {
+      const matchingProjects = projects.filter((p) => p.title === project.title);
+      if (matchingProjects.length > 1 && project.techType) {
+        if (!groupMap.has(project.title)) {
+          groupMap.set(project.title, []);
+        }
+        groupMap.get(project.title)!.push(project);
+      } else {
+        ungroupedProjects.push(project);
+      }
+    });
+
+    const result: (Project | ProjectGroup)[] = [];
+
+    for (const [title, variants] of groupMap.entries()) {
+      const firstProject = variants[0];
+      const group: ProjectGroup = {
+        baseTitle: title,
+        image: firstProject.image,
+        description: firstProject.description,
+        variants: variants,
+      };
+      result.push(group);
+    }
+
+    ungroupedProjects.forEach((project) => {
+      if (!groupMap.has(project.title)) {
+        result.push(project);
+      }
+    });
+
+    return result;
+  });
 
   toggleMenu() {
     this.isMenuOpen.update((isOpen: boolean) => !isOpen);
@@ -262,5 +320,26 @@ export class App {
 
   getCurrentYear() {
     return new Date().getFullYear();
+  }
+
+  openProjectModal(group: ProjectGroup) {
+    this.selectedProjectGroup.set(group);
+    this.isModalOpen.set(true);
+  }
+
+  closeModal() {
+    this.isModalOpen.set(false);
+    this.selectedProjectGroup.set(null);
+  }
+
+  isProjectGroup(item: Project | ProjectGroup): item is ProjectGroup {
+    return 'variants' in item;
+  }
+
+  @HostListener('document:keydown.escape', ['$event'])
+  handleEscapeKey(event: Event) {
+    if (this.isModalOpen()) {
+      this.closeModal();
+    }
   }
 }

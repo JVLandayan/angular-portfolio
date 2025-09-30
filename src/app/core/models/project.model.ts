@@ -7,5 +7,13 @@ export interface Project {
   demoLink: string;
   codeLink: string;
   private?: boolean;
-  noLiveDemo?:boolean;
+  noLiveDemo?: boolean;
+  techType?: string;
+}
+
+export interface ProjectGroup {
+  baseTitle: string;
+  image: string;
+  description: string;
+  variants: Project[];
 }
