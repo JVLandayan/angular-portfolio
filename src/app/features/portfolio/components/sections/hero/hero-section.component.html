@@ -1,0 +1,37 @@
+<section id="home" class="min-h-screen flex items-center justify-center">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
+    <div class="text-center">
+      <div class="mb-8">
+        <div class="w-64 h-64 rounded-full mx-auto mb-8 overflow-hidden shadow-2xl profile-frame-glass">
+          <img
+            src="https://res.cloudinary.com/dadjlsn2j/image/upload/v1754133114/dublab/articles/gpulzxkieocxujhdlpj0.jpg"
+            alt="Juaquin Victor Mendoza Landayan"
+            class="w-full h-full object-cover"
+          >
+        </div>
+      </div>
+      <h1 class="text-5xl md:text-7xl font-bold mb-6">
+        <span class="gradient-text-purple">Full Stack</span><br/>
+        <span class="text-white">Software Engineer</span>
+      </h1>
+      <p class="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto">
+        3+ years of full-stack development experience with 2+ years specializing in .NET & Angular.
+        Strong background in JavaScript/TypeScript development
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <button
+          (click)="scrollToSection.emit('projects')"
+          class="btn-glass-primary px-8 py-3 hover:cursor-pointer"
+        >
+          View Technical Projects
+        </button>
+        <button
+          (click)="scrollToSection.emit('experience')"
+          class="btn-glass-secondary px-8 py-3 hover:cursor-pointer"
+        >
+          Professional Experience
+        </button>
+      </div>
+    </div>
+  </div>
+</section>

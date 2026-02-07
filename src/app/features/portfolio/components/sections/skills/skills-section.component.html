@@ -1,0 +1,27 @@
+<section id="skills" class="py-20 section-glass">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl md:text-5xl font-bold mb-4">
+        My <span class="gradient-text-purple">Skills</span>
+      </h2>
+      <p class="text-xl text-gray-300">
+        Technologies and tools I use to bring ideas to life
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+      @for (skillCategory of skills(); track skillCategory.name) {
+        <div class="skill-card-glass rounded-2xl p-8 hover:scale-105 transition-transform duration-300">
+          <h3 class="text-2xl font-semibold mb-6 text-primary-400">{{ skillCategory.name }}</h3>
+          <div class="space-y-3">
+            @for (tech of skillCategory.technologies; track tech) {
+              <div class="bg-gray-700/50 rounded-lg px-4 py-2 text-gray-300 tag-glass">
+                {{ tech }}
+              </div>
+            }
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
