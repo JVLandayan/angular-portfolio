@@ -1,6 +1,6 @@
-@import "tailwindcss";
-
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=JetBrains+Mono:wght@100;200;300;400;500;600;700;800&display=swap');
+
+@import "tailwindcss";
 
 
 
@@ -1198,7 +1198,6 @@ html, body {
   height: 100%;
 }
 
-/* Selection color */
 ::selection {
   background: var(--glass-accent-600);
   color: white;
