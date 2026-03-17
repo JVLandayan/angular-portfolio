@@ -11,6 +11,7 @@ export const PORTFOLIO_NAV_ITEMS: NavigationItem[] = [
   { id: 'skills', label: 'Skills' },
   { id: 'projects', label: 'Projects' },
   { id: 'experience', label: 'Experience' },
+  { id: 'certifications', label: 'Certifications' },
   { id: 'contact', label: 'Contact' },
 ];
 
@@ -110,6 +111,15 @@ export const PORTFOLIO_PROJECTS: Project[] = [
 ];
 
 export const PORTFOLIO_EXPERIENCE: Experience[] = [
+  {
+    company: 'China Bank Corporation - (White Cloak Technologies Inc)',
+    position: 'Full Stack Engineer (Contractual)',
+    duration: 'October 2025 - April 2026',
+    description:
+      `
+     Led end-to-end delivery of a microservices platform — from solo MVP through Phase 2 — using gRPC for inter-service communication and Azure Service Bus for async messaging. Demoed to stakeholders, then shifted into a lead role: managing Azure DevOps tasks, establishing the team's Git workflow from scratch, and maintaining code quality through peer review. Mentored a returning senior developer back to independent contribution through pair programming, covering EF Core, DDD, Clean Architecture, and SOLID principles. Also proposed AI-driven enhancements including a Natural Language Querying layer on the reporting module so non-technical users could query data without writing SQL.
+      `,
+  },
   {
     company: 'Agora Hive (Defunct) - Freelance',
     position: 'Full Stack Engineer',
